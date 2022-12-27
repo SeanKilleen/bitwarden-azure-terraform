@@ -2,3 +2,7 @@
 # YOU CAN OVERRIDE ANY VARIABLES BY SETTING DUMMY VALUES AND OVERRIDING THEM IN FROM THE COMMAND LINE.
 
 envName = "prod"
+
+# Override these from the command line
+dbSAAccountName     = "CHANGEME"
+dbSAAccountPassword = "CHANGEME"

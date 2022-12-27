@@ -35,5 +35,27 @@ resource "azurerm_key_vault" "keyvault" {
 }
 
 # TODO: Azure SQL DB that Bitawarden will use (serverless -- I'm OK with cold start issues for cost savings since it'll just show up as a timeout for me once)
+resource "azurerm_mssql_server" "sqlserver" {
+  name                          = "bitwarden-${var.envName}"
+  resource_group_name           = azurerm_resource_group.rg.name
+  location                      = azurerm_resource_group.rg.location
+  version                       = "12.0"
+  administrator_login           = var.dbSAAccountName
+  administrator_login_password  = var.dbSAAccountPassword
+  public_network_access_enabled = false
+}
+
+resource "azurerm_mssql_database" "sqldb" {
+  name                        = "bitwarden-${var.envName}"
+  server_id                   = azurerm_mssql_server.sqlserver.id
+  license_type                = "BasePrice"
+  sku_name                    = "S0"
+  auto_pause_delay_in_minutes = 30
+  min_capacity                = 0.5
+
+  short_term_retention_policy {
+    retention_days = 7
+  }
+}
 # TODO: Container Group to run the instances
 # TODO: Figure out how to allow access and refrence variables from keyvault
