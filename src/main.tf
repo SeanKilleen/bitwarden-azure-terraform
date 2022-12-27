@@ -36,4 +36,4 @@ resource "azurerm_key_vault" "keyvault" {
 
 # TODO: Azure SQL DB that Bitawarden will use (serverless -- I'm OK with cold start issues for cost savings since it'll just show up as a timeout for me once)
 # TODO: Container Group to run the instances
-# TODO: Figure out how to pull variables from keyvault
+# TODO: Figure out how to allow access and refrence variables from keyvault
