@@ -58,5 +58,6 @@ resource "azurerm_mssql_database" "sqldb" {
   }
 }
 # TODO: Container Group to run the instances
-# TODO: Figure out how to allow access and refrence variables from keyvault
+# TODO: Figure out how to allow access and reference variables from keyvault
+# TODO: Figure out storage account to mount volume for container data
 # TODO: Sending email (Azure communication service? Sendgrid?)
