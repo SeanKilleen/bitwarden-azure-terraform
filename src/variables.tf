@@ -1,0 +1,3 @@
+variable "envName" {
+    type = string
+}
